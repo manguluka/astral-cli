@@ -1,6 +1,6 @@
 [package]
 authors = ["manguluka <tali@manguluka.com>"]
-description = "Find information on celestial bodies"
+description = "Astronomy toolkit for finding the position of the Sun, Moon, planets and other celestial bodies at a place and time."
 license = "MIT"
 name = "astral-cli"
 version = "0.2.0"
@@ -17,10 +17,6 @@ clap = "2"
 colored = "1.5"
 geocode = "0.1.1"
 prettytable-rs = "0.6.7"
-termion = "1.5.1"
-
-[dependencies.tui]
-git = "https://github.com/fdehau/tui-rs"
 
 
 [replace."astral:0.1.0"]
