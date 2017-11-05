@@ -3,6 +3,8 @@ authors = ["manguluka <tali@manguluka.com>"]
 description = "Astronomy toolkit for finding the position of the Sun, Moon, planets and other celestial bodies at a place and time."
 license = "MIT"
 name = "astral-cli"
+repository = "https://github.com/manguluka/astral-cli"
+homepage = "https://github.com/manguluka/astral-cli"
 version = "0.2.0"
 
 [[bin]]
