@@ -17,7 +17,7 @@ use util::*;
 fn main() {
     let app = App::new("astral")
         .setting(AppSettings::AllowLeadingHyphen)
-        .about("Look up information on celestial bodies.")
+        .about(env!("CARGO_PKG_DESCRIPTION"))
         .version(env!("CARGO_PKG_VERSION"))
         .args(&[
             Arg::with_name("location")
