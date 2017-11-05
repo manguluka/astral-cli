@@ -6,7 +6,7 @@ Astronomy toolkit for finding the position of the Sun, Moon, planets and other c
 ## Commands
 Most results are relative to a time and location on earth. 
 
-Run `astral <command> --help` for command details
+Run `astral --help` or `astral <command> --help` for usage details
 
 `astral moon` Information on Earth's moon.
 
@@ -20,13 +20,12 @@ Run `astral <command> --help` for command details
 
 ## Installation
 
-#### Ubuntu
-`apt-get install astral`
-#### Arch
-`apt-get install astral`
+#### Mac (Homebrew)
 
-#### Mac
-`brew install astral`
+```
+brew tap manguluka/tap;
+brew install astral;
+```
 
 #### From source
 Prerequisites: Rust environment with Cargo package manager([Rustup](https://www.rustup.rs) is recommended)
