@@ -24,7 +24,9 @@ Run `astral --help` or `astral <command> --help` for usage details
 
 ```
 brew tap manguluka/tap;
-brew install astral;
+brew install astral-cli;
+# Use
+astral-cli --help;
 ```
 
 #### From source
