@@ -22,12 +22,12 @@ pub fn table(header:(&str,&str,&str),rows: Vec<(&str,f64,f64)>){
 pub fn command_all(julian_day: f64,location: Location) {
     let solar_info = sun::get_celestial_position(julian_day).get_hz_coords(location);
     let lunar_info = moon::get_lunar_info(julian_day,location);
-    let venus_info =  planet::get_celestial_position(julian_day, "Venus").get_hz_coords(location);
-    let mercury_info =  planet::get_celestial_position(julian_day, "Mercury").get_hz_coords(location);
-    let mars_info =  planet::get_celestial_position(julian_day, "Mars").get_hz_coords(location);
-    let jupiter_info =  planet::get_celestial_position(julian_day, "Jupiter").get_hz_coords(location);
-    let saturn_info =  planet::get_celestial_position(julian_day, "Saturn").get_hz_coords(location);
-    let polaris_info =  star::get_celestial_position(julian_day, "Polaris").get_hz_coords(location);
+    let venus_info =  planet::get_celestial_position(julian_day, "Venus").unwrap().get_hz_coords(location);
+    let mercury_info =  planet::get_celestial_position(julian_day, "Mercury").unwrap().get_hz_coords(location);
+    let mars_info =  planet::get_celestial_position(julian_day, "Mars").unwrap().get_hz_coords(location);
+    let jupiter_info =  planet::get_celestial_position(julian_day, "Jupiter").unwrap().get_hz_coords(location);
+    let saturn_info =  planet::get_celestial_position(julian_day, "Saturn").unwrap().get_hz_coords(location);
+    let polaris_info =  star::get_celestial_position(julian_day, "Polaris").unwrap().get_hz_coords(location);
     let header = ("Object", "Azimuth", "Altitude");
     let  rows: Vec<(&str,f64,f64)> = vec![
         ("Sun",solar_info.az,solar_info.alt),
@@ -54,7 +54,7 @@ pub fn print_date_location(date: DateTime<FixedOffset>, location: Location) {
         default_location_text
     );
     println!("Date: {} {}", date.to_string().bold(), default_date_text);
-    println!("");
+    println!();
 }
 pub fn print_lunar_info(info: LunarInfo) {
     println!("{}", "Moon:".bold());
@@ -66,31 +66,26 @@ pub fn print_lunar_info(info: LunarInfo) {
 }
 
 pub fn get_location_from_arg(location_arg: std::option::Option<&str>) -> Location {
-    let location = match location_arg {
-        Some(pos) => {
-            let pos_vec: Vec<f64> = pos.split(",").map(|s| s.parse().unwrap()).collect();
-            return Location{
+    location_arg
+        .and_then(|pos|{
+            let pos_vec: Vec<f64> = pos.split(',').map(|s| s.parse().unwrap()).collect();
+            Some(Location{
                 lat:pos_vec[0],
                 lon:pos_vec[1],
-            }
-        },
-        None => {
-            DEFAULT_LOCATION
-        }
-    };
-    location
+            })
+        })
+        .unwrap_or(DEFAULT_LOCATION)
 }
 
 pub fn get_date_from_arg(date_arg: std::option::Option<&str>) -> DateTime<FixedOffset> {
     let current_local_datetime = Local::now();
     let default_date = current_local_datetime.with_timezone(current_local_datetime.offset());
-    let date = match date_arg {
+    match date_arg {
         Some(pos) => {
-            return DateTime::parse_from_rfc3339(pos).unwrap();
+            DateTime::parse_from_rfc3339(pos).unwrap()
         },
         None => {
             default_date
         }
-    };
-    date
+    }
 }

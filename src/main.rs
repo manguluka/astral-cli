@@ -119,7 +119,7 @@ fn main() {
         }
         ("", None) => {
             println!("{}","No command provided.\nUsing default(`astral all`). Run `astral help` for available commands".bold());
-            println!("");
+            println!();
         },
         _ => unreachable!(), 
     }

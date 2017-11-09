@@ -5,7 +5,9 @@ license = "MIT"
 name = "astral-cli"
 repository = "https://github.com/manguluka/astral-cli"
 homepage = "https://github.com/manguluka/astral-cli"
-version = "0.2.0"
+keywords = ["astronomy", "planets","stars"]
+categories = ["science", "algorithms","command-line-interface","command-line-utilities"]
+version = "0.3.0"
 
 [[bin]]
 bench = false
@@ -13,7 +15,7 @@ name = "astral"
 path = "src/main.rs"
 
 [dependencies]
-astral = "^0.2.0"
+astral = "^0.3.0"
 chrono = "0.4"
 clap = "2"
 colored = "1.5"
@@ -21,8 +23,8 @@ geocode = "^0.1"
 prettytable-rs = "0.6.7"
 
 
-[replace."astral:0.1.0"]
+[replace."astral:0.3.0"]
 path = "../astral"
 
-[replace."geocode:0.1.1"]
-path = "../geocode"
+# [replace."geocode:0.1.1"]
+# path = "../geocode"
