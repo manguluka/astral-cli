@@ -6,7 +6,7 @@ name = "astral-cli"
 repository = "https://github.com/manguluka/astral-cli"
 homepage = "https://github.com/manguluka/astral-cli"
 keywords = ["astronomy", "planets","stars"]
-categories = ["science", "algorithms","command-line-interface","command-line-utilities"]
+categories = ["science", "algorithms","command-line-utilities"]
 version = "0.3.0"
 
 [[bin]]
