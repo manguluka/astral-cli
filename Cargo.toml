@@ -7,7 +7,7 @@ repository = "https://github.com/manguluka/astral-cli"
 homepage = "https://github.com/manguluka/astral-cli"
 keywords = ["astronomy", "planets","stars"]
 categories = ["science", "algorithms","command-line-utilities"]
-version = "0.3.1"
+version = "0.3.2"
 
 [[bin]]
 bench = false
@@ -23,7 +23,7 @@ geocode = "^0.1"
 prettytable-rs = "0.6.7"
 
 
-[replace."astral:0.3.0"]
+[replace."astral:0.3.1"]
 path = "../astral"
 
 # [replace."geocode:0.1.1"]
