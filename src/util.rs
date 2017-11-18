@@ -19,6 +19,33 @@ pub fn table(header:(&str,&str,&str),rows: Vec<(&str,f64,f64)>){
     table.printstd();
 }
 
+pub fn celestial_position_table(rows: Vec<(&str,f64,f64)>){
+    let mut table = Table::new();
+    let header = ("Object", "Azimuth", "Altitude");
+    table.add_row(row![header.0,header.1,header.2]);
+    for &x in &rows {
+        table.add_row(row![x.0,x.1,x.2]);
+    }
+    table.printstd();
+}
+
+pub fn command_star(julian_day: f64,location: Location,name: &str) {
+    let star_data = star::get_data(name.to_string()).unwrap();
+    let star_info =  star::get_celestial_position(julian_day, name).unwrap().get_hz_coords(location);
+    let  rows: Vec<(&str,f64,f64)> = vec![
+        (star_data.proper.as_str(),star_info.az,star_info.alt),
+    ];
+    celestial_position_table(rows);
+}
+
+pub fn command_planet(julian_day: f64,location: Location,name: &str) {
+    let info =  planet::get_celestial_position(julian_day, name).unwrap().get_hz_coords(location);
+    let  rows: Vec<(&str,f64,f64)> = vec![
+        (name,info.az,info.alt),
+    ];
+    celestial_position_table(rows);
+}
+
 pub fn command_all(julian_day: f64,location: Location) {
     let solar_info = sun::get_celestial_position(julian_day).get_hz_coords(location);
     let lunar_info = moon::get_lunar_info(julian_day,location);

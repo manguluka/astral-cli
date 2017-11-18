@@ -97,13 +97,13 @@ fn main() {
         ("sun", Some(_)) => {
 
         }
-        ("planet", Some(planet_matches)) => {
-            let planet_info = planet::get_celestial_position(julian_day,planet_matches.value_of("name").unwrap());
-            println!("{:?}", planet_info);
+        ("planet", Some(matches)) => {
+            print_date_location(date,location);
+            command_planet(julian_day,location,matches.value_of("name").unwrap());
         }
         ("star", Some(matches)) => {
-            let info = star::get_celestial_position(julian_day,matches.value_of("name").unwrap());
-            println!("{:?}", info);
+            print_date_location(date,location);
+            command_star(julian_day,location,matches.value_of("name").unwrap());
         }
         ("geocode", Some(geocode_matches)) => {
             let place_name = geocode_matches.value_of("place-name").unwrap();
